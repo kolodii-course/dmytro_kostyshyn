@@ -1,45 +1,17 @@
 import React from "react";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import ScheduleScreen from "./screens/ScheduleScreen/ScheduleScreen";
+import { Routes, Route } from "react-router-dom";
+import AdminPanelScreen from "./screens/AdminPanelScreen/AdminPanelScreen";
+import AuthScreen from "./screens/AuthScreen/AuthScreen";
 
-const { Header, Content, Footer } = Layout;
-
-const App = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
+export default function App() {
   return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={new Array(4).fill(null).map((_, index) => {
-            const key = index + 1;
-            return {
-              key,
-              label: `nav ${key}`,
-            };
-          })}
-        />
-      </Header>
+    <Routes>
+      <Route path="/" element={<ScheduleScreen />} />
+      <Route path="/panel" element={<AdminPanelScreen />} />
+      <Route path="/auth" element={<AuthScreen />} />
 
-      <Content style={{ padding: "0 50px" }}>
-        <div
-          className="site-layout-content"
-          style={{ background: colorBgContainer }}
-        >
-          Conteasfasfasfsnt
-        </div>
-      </Content>
-
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2023 Created by Ant UED
-      </Footer>
-    </Layout>
+      <Route path="*" element={<ScheduleScreen />} />
+    </Routes>
   );
-};
-
-export default App;
+}
