@@ -77,20 +77,17 @@ export default function ScheduleScreen() {
   const [columns, dataSource] = getSchedule(outages);
 
   return (
-    <>
-      <Navbar />
-      <div className="schedule-container">
-        <div className="schedule-calendar">
-          <Calendar
-            fullscreen={false}
-            onChange={(value) => setCurrentDate(new Date(value))}
-          />
-        </div>
+    <div className="schedule-container">
+    <div className="schedule-calendar">
+      <Calendar
+        fullscreen={false}
+        onChange={(value) => setCurrentDate(new Date(value))}
+      />
+    </div>
 
-        <div className="schedule-table">
-          <Table dataSource={dataSource} columns={columns} pagination={false} />
-        </div>
-      </div>
-    </>
+    <div className="schedule-table">
+      <Table dataSource={dataSource} columns={columns} pagination={false} />
+    </div>
+  </div>
   );
 }
