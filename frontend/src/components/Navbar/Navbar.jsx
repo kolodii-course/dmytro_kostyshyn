@@ -11,14 +11,21 @@ export default function Navbar() {
       items.push(
         <div className="navbar-item">
           <Link to={"/auth"}>
-            <Button>SING IN</Button>
+            <Button>Sing In</Button>
           </Link>
         </div>
       );
       items.push(
         <div className="navbar-item">
           <Link to={"/auth"}>
-            <Button>SING UP</Button>
+            <Button>Sing Up</Button>
+          </Link>
+        </div>
+      );
+      items.push(
+        <div className="navbar-item">
+          <Link to={"/panel"}>
+            <Button>Admin Panel</Button>
           </Link>
         </div>
       );
@@ -28,7 +35,7 @@ export default function Navbar() {
       items.push(
         <div className="navbar-item">
           <Link to={"/"}>
-            <Button>GO TO HOME PAGE</Button>
+            <Button>Go To Home Page</Button>
           </Link>
         </div>
       );
@@ -38,7 +45,7 @@ export default function Navbar() {
   return (
     <div className="navbar-container">
       <div className="navbar-title">
-        <Link to={"/"}>Blackouts Schedule</Link>
+        <Link to={"/"}>Blackouts <img src="icons/favicon.svg"></img> Schedule</Link>
       </div>
 
       <div className="navbar-items">{items}</div>

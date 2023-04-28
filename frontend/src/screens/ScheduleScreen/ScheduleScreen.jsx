@@ -48,7 +48,7 @@ function getDataSource(outages, columns) {
         if (hour >= startAt && endAt >= hour) {
           if (dataIndex === outage.queue.id) {
             dataSource[hour][dataIndex] = (
-              <img src="/no-energy.svg" alt="no-energy" width={25} />
+              <img src="icons/no-energy.svg" alt="no-energy" width={25} />
             );
           }
         }
