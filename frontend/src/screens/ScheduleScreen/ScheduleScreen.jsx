@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./../../components/Navbar/Navbar";
 import { Calendar, Table } from "antd";
 import { getOutages } from './../../api/getOutages'
 import './ScheduleScreen.scss'
@@ -10,6 +9,7 @@ function getColumns(outages) {
       title: "Hour",
       dataIndex: "hour",
       key: 0,
+      rowScope: 'row',
     },
   ];
 
