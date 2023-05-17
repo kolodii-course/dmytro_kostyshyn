@@ -1,8 +1,22 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app-1c99216d.js",
+    "dynamicImports": [
+      "resources/js/bootstrap.js",
+      "resources/js/components/Example.jsx"
+    ],
+    "file": "assets/app-446e6103.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-d4b42df8.js",
+    "isDynamicEntry": true,
+    "src": "resources/js/bootstrap.js"
+  },
+  "resources/js/components/Example.jsx": {
+    "file": "assets/Example-c68b0fe8.js",
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Example.jsx"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-3ea8b221.css",

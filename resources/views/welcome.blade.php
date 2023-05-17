@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackouts Schedule</title>
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @viteReactRefresh
+    @vite(['resources/index.css', 'resources/main.jsx'])
+
 </head>
+
 <body>
-    <!-- React root DOM -->
-    <div id="user">
-    </div>
-    <!-- React JS -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <div id="root"></div>
 </body>
+
 </html>
