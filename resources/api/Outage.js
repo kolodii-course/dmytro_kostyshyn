@@ -2,7 +2,7 @@ export default class Outage {
     static #url = "/api/outage";
     static #headers = { "Content-Type": "application/json" };
 
-    static getAll(date = "", queueId) {
+    static getAll(date = "", queueId = "") {
         queueId = queueId != 0 ? String(queueId) : "";
 
         return fetch(
