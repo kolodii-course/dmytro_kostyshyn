@@ -9,10 +9,14 @@ use App\Http\Requests\UpdateOutageRequest;
 
 class OutageController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        return Outage::with('queue')->get();
+        $data = Outage::with('queue')
+            ->where('queue_id', 'like', $request->input('queueId')."%")
+            ->where('start_at', 'like', $request->input('date')."%")
+            ->get();
+
+        return $data;
     }
 
     public function show($id)
