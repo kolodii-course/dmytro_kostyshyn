@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./../../components/Navbar/Navbar";
-import { Calendar, Table } from "antd";
-import { getOutages } from "./../../api/getOutages";
+import { Calendar, Table, Button, Dropdown, Space, Select } from "antd";
 import "./ScheduleScreen.scss";
+import Outage from "../../api/Outage";
+import { Queue } from "../../api/Queue";
 
 function getColumns(outages) {
     const columns = [
@@ -10,6 +11,7 @@ function getColumns(outages) {
             title: "Hour",
             dataIndex: "hour",
             key: 0,
+            rowScope: "row",
         },
     ];
 
@@ -30,6 +32,10 @@ function getColumns(outages) {
 
 function getDataSource(outages, columns) {
     let dataSource = [];
+
+    if (!outages.length) {
+        return dataSource;
+    }
 
     for (let hour = 0; hour < 24; hour++) {
         dataSource.push({
@@ -76,22 +82,68 @@ function getSchedule(outages) {
 }
 
 export default function ScheduleScreen() {
-    const [currentDate, setCurrentDate] = useState(new Date());
     const [outages, setOutages] = useState([]);
+    const [queues, setQueues] = useState([]);
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentQueueId, setCurrentQueueId] = useState(
+        localStorage.getItem("QueueId")
+            ? Number(localStorage.getItem("QueueId"))
+            : 0
+    );
+
+    function fetchOutages(currentDate, currentQueueId) {
+        Outage.getAll(currentDate, currentQueueId).then((data) =>
+            setOutages(data)
+        );
+    }
+
+    function onChangeDate(date) {
+        date = new Date(date);
+
+        setCurrentDate(date);
+        fetchOutages(date, currentQueueId);
+    }
+
+    function onChangeQueue(queueId) {
+        setCurrentQueueId(queueId);
+        localStorage.setItem("QueueId", queueId);
+        fetchOutages(currentDate, queueId);
+    }
 
     useEffect(() => {
-        getOutages(currentDate).then((data) => setOutages(data));
+        fetchOutages(currentDate, currentQueueId);
+        Queue.getAll().then((data) =>
+            setQueues([{ id: 0, name: "No Select" }, ...data])
+        );
     }, []);
 
     const [columns, dataSource] = getSchedule(outages);
-    console.log(columns, dataSource);
 
     return (
         <div className="schedule-container">
             <div className="schedule-calendar">
                 <Calendar
                     fullscreen={false}
-                    onChange={(value) => setCurrentDate(new Date(value))}
+                    onChange={onChangeDate}
+                    setCurrentDate={true}
+                />
+
+                <Select
+                    showSearch
+                    placeholder="Queue: No Select"
+                    optionFilterProp="children"
+                    className="schedule-select"
+                    onChange={onChangeQueue}
+                    options={queues.map((queue) => ({
+                        value: queue.id,
+                        label: "Queue: " + queue.name,
+                    }))}
+                    value={currentQueueId}
+                    filterOption={(input, option) =>
+                        (option?.label ?? "")
+                            .toLowerCase()
+                            .includes(input.toLowerCase())
+                    }
                 />
             </div>
 

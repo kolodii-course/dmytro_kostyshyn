@@ -1,34 +1,47 @@
 .schedule-container {
     display: flex;
     margin: 50px;
-  }
-  
-  .schedule-calendar {
+}
+
+.schedule-calendar {
     width: 300px;
-  }
-  
-  .schedule-table {
+}
+
+.schedule-table {
     margin-left: 20px;
     width: calc(100% - 300px);
-  }
-  
-  @media only screen and (max-width: 620px) {
+}
+
+.schedule-select {
+    width: 300px;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 620px) {
     .schedule-container {
-      display: flex;
-      margin: 50px;
-      flex-direction: column;
-      align-items: center;
+        display: flex;
+        margin: 50px;
+        flex-direction: column;
+        align-items: center;
     }
-  
+
+    .schedule-select {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        // padding: 10px;
+        // margin: 20px 20px 20px 20px;
+    }
+
     .schedule-calendar {
-      width: 100%;
+        width: 100%;
     }
-  
+
     .schedule-table {
-      margin-top: 20px;
-      margin-left: 0px;
-      // min-width: 300px;`
-      width: 100%;
+        margin-top: 20px;
+        margin-left: 0px;
+        // min-width: 300px;`
+        width: 100%;
     }
-  }
-  
+}
+
