@@ -1,0 +1,51 @@
+.outage-container {
+    margin-bottom: 30px;
+}
+
+.outage-input-container {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.outage-button {
+    padding-left: 10px;
+}
+
+.outage-inputs {
+    display:  flex;
+    align-items: center;
+}
+
+.outage-input-date {
+    height: 30px;
+    width: 128px;
+    margin-right: 8px;
+}
+.outage-input-time {
+    height: 30px;
+    width: 75px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.outage-input-symbol {
+    font-size: 24pt;
+    line-height: 0.75;
+    font-weight: 600;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.outage-input-queue {
+    width: 160px;
+    margin-left: 8px;
+    margin-right: 8px;
+
+}
+
+.outage-input-checkbox{
+    height: 22px;
+    width: 22px;
+    margin-right: 3px;
+}
