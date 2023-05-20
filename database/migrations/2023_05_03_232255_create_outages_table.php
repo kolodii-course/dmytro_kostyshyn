@@ -10,7 +10,7 @@ class CreateOutagesTable extends Migration
     {
         Schema::create('outages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('queue_id')->constrained('queues');
+            $table->foreignId('queue_id')->constrained('queues')->onDelete('cascade');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
             $table->timestamps();

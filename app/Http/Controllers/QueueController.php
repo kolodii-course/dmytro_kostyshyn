@@ -29,9 +29,12 @@ class QueueController extends Controller
         return $queue;
     }
 
-    public function destroy(Queue $queue)
+    public function destroy($id)
     {
+        $queue = Queue::findOrFail($id);
+        $queue->outages()->delete();
         $queue->delete();
-        return response()->noContent();
+
+        return response()->json([], 204);
     }
 }
