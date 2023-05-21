@@ -54,8 +54,8 @@ function isFindQueue(queues, queue_name) {
 }
 
 export default function ScheduleParser() {
-    const [outages, setOutages] = useState([]);
     const [queues, setQueues] = useState([]);
+    const [outages, setOutages] = useState([]);
     const [needCreateQueues, setNeedCreateQueues] = useState([]);
     const [inputText, setInputText] = useState("");
     const [selectDate, setSelectDate] = useState(
@@ -117,6 +117,10 @@ export default function ScheduleParser() {
                 )
             ),
         ]);
+
+        setInputText("")
+        setOutages([])
+        setNeedCreateQueues([])
     }
 
     return (

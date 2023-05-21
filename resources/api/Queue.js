@@ -11,6 +11,7 @@ export class Queue {
                 const req = await fetch(this.#url);
                 return await req.json();
             } catch (_) {
+                return []
                 await sleep(this.#pause);
             }
         }

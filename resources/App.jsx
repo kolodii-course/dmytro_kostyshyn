@@ -16,6 +16,9 @@ export default function App() {
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/registration" element={<RegistrationScreen />} />
       <Route path="/panel" element={<AdminPanelScreen />} />
+      <Route path="/panel/parser" element={<AdminPanelScreen />} />
+      <Route path="/panel/queue" element={<AdminPanelScreen />} />
+      <Route path="/panel/outage" element={<AdminPanelScreen />} />
 
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>

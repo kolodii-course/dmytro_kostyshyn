@@ -1,5 +1,8 @@
 .admin-panel-container {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+
 }
 .delete-button {
     color: rgb(79, 117, 221);
@@ -8,3 +11,6 @@
 
 }
 
+.admin-tabs {
+    align-self: center;
+}

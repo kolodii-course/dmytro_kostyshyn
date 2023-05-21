@@ -90,7 +90,7 @@ export default function QueueTable() {
                     ...queue,
                     actions: queue.id,
                 }))}
-                pagination={false}
+                pagination={true}
             />
         </div>
     );

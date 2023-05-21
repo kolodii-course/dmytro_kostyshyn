@@ -18,6 +18,7 @@ export default class Outage {
                 );
                 return await req.json();
             } catch (_) {
+                return []
                 await sleep(this.#pause);
             }
         }

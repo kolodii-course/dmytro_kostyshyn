@@ -220,7 +220,7 @@ export default function OutageTable() {
                     ...outage,
                     actions: outage.id,
                 }))}
-                pagination={false}
+                pagination={true}
             />
         </div>
     );
