@@ -6,12 +6,19 @@ import Outage from "../../api/Outage";
 import { Queue } from "../../api/Queue";
 
 function getColumns(outages) {
+    const currentHour = new Date().getHours();
     const columns = [
         {
             title: "Hour",
             dataIndex: "hour",
             key: 0,
             rowScope: "row",
+            render: (val) => {
+                if (Number(val.split(":")[0]) === currentHour) {
+                    return <div style={{ fontSize: '20px' }}>{val}</div>;
+                }
+                return <div style={{ color: "gray" }}>{val}</div>;
+            },
         },
     ];
 
