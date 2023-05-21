@@ -57,9 +57,9 @@ export default function QueueTable() {
             render: (id) => (
                 <a
                     onClick={() => onDelete(id)}
-                    style={{ color: "red", fontWeight: "bold" }}
+                    className="delete-button"
                 >
-                    Delete
+                    Remove
                 </a>
             ),
         },

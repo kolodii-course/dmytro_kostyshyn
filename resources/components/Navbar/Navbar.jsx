@@ -12,10 +12,10 @@ const NavbarButtons = {
     </div>
   ),
 
-  Login: (
+  Authorization: (
     <div className="navbar-item" key={1}>
       <Link to={"/login"}>
-        <Button>Login</Button>
+        <Button>Authorization</Button>
       </Link>
     </div>
   ),
@@ -42,8 +42,8 @@ export default function Navbar() {
 
   switch (useLocation().pathname) {
     case "/":
-      buttons.push(NavbarButtons.Login);
-      buttons.push(NavbarButtons.Registration);
+      buttons.push(NavbarButtons.Authorization);
+    //   buttons.push(NavbarButtons.Registration);
       buttons.push(NavbarButtons.AdminPanel);
       break;
 
@@ -53,7 +53,7 @@ export default function Navbar() {
       break;
 
     case "/registration":
-      buttons.push(NavbarButtons.Login);
+      buttons.push(NavbarButtons.Authorization);
       buttons.push(NavbarButtons.GoToHomePage);
       break;
 

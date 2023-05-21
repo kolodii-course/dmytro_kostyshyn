@@ -104,11 +104,8 @@ export default function OutageTable() {
             key: "actions",
             dataIndex: "actions",
             render: (id) => (
-                <a
-                    onClick={() => onDelete(id)}
-                    style={{ color: "red", fontWeight: "bold" }}
-                >
-                    Delete
+                <a onClick={() => onDelete(id)} className="delete-button">
+                    Remove
                 </a>
             ),
         },

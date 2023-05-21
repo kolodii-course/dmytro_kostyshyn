@@ -10,7 +10,7 @@
     <!-- Styles -->
 
     @viteReactRefresh
-    @vite(['resources/index.css', 'resources/main.jsx'])
+    @vite(['resources/main.jsx'])
 
 </head>
 
