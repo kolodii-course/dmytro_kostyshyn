@@ -13,9 +13,9 @@ class QueueController extends Controller
         return Queue::all();
     }
 
-    public function show(Queue $queue)
+    public function show($id)
     {
-        return $queue;
+        return Queue::findOrFail($id);
     }
 
     public function store(CreateQueueRequest $request)
@@ -23,9 +23,12 @@ class QueueController extends Controller
         return Queue::create($request->validated());
     }
 
-    public function update(UpdateQueueRequest $request, Queue $queue)
+    public function update(UpdateQueueRequest $request, $id)
     {
-        $queue->update($request->validated());
+        $queue = Queue::findOrFail($id);
+        $queue->name = $request->name;
+        $queue->save();
+
         return $queue;
     }
 
