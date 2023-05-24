@@ -1,0 +1,51 @@
+version: '3'
+
+networks:
+  private-network:
+
+services:
+  database:
+    container_name: database
+    restart: always
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: bs-app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./db-storage:/var/lib/postgresql/data
+    networks:
+      - private-network
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+    - private-network
+    depends_on:
+      - database
+
+  cloudflared:
+    container_name: cloudflared
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TOKEN}
+    networks:
+    - private-network
+    depends_on:
+    - app
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:latest
+    ports:
+    - 9443:9443
+    volumes:
+    - ./portainer-data:/data
+    - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
