@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blackouts Schedule</title>
+    <title>Blackout Schedule</title>
     <!-- Styles -->
 
     @viteReactRefresh

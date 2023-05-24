@@ -66,7 +66,7 @@ export default function Navbar() {
         <div className="navbar-container">
             <div className="navbar-title">
                 <Link to={"/"}>
-                    Blackouts <img src="/icons/favicon.svg"></img> Schedule
+                    Blackout <img src="/icons/favicon.svg"></img> Schedule
                 </Link>
             </div>
 
