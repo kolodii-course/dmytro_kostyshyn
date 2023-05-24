@@ -17,9 +17,9 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pdo pdo_pgsql
 
-COPY --from=VITE_BUILD /app/public /var/www/html/public
-COPY nginx.conf /etc/nginx/sites-available/default
 COPY . /var/www/html
+COPY nginx.conf /etc/nginx/sites-available/default
+COPY --from=VITE_BUILD /app/public /var/www/html/public
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN cd /var/www/html && composer install --no-dev --optimize-autoloader
