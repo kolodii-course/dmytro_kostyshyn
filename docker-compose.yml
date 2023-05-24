@@ -42,6 +42,8 @@ services:
   portainer:
     container_name: portainer
     image: portainer/portainer-ce:latest
+    networks:
+    - private-network
     ports:
     - 9443:9443
     volumes:
