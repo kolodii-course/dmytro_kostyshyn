@@ -31,21 +31,24 @@ docker exec app php /var/www/html/artisan migrate
 
 ### Run local
 ```bash
+# Copy example  
+RUN cp .env.example .env
+
 # Install packages for laravel
 composer install
 
 # Install packages for nodejs
-npm i install
+npm install
 
-# Copy example  
-RUN cp .env.example .env
+# Run in dev mode frontend
+npm run dev
+
+# Run generate keys
+artisan key:generate
 
 # Migrate
 php artisan migrate
 
-# Run php server
+# Run php server on http://localhost:8000
 php artisan serve
-
-# Run in dev mode frontend
-npm run dev
 ```
