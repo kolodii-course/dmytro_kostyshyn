@@ -55,20 +55,21 @@ export default function QueueTable() {
             key: "actions",
             dataIndex: "actions",
             render: (id) => (
-                <a
-                    onClick={() => onDelete(id)}
-                    className="delete-button"
-                >
-                    Remove
-                </a>
+                <>
+                    <a className="delete-button">
+                        Edit
+                    </a>
+                    {" "}
+                    <a onClick={() => onDelete(id)} className="delete-button">
+                        Remove
+                    </a>
+                </>
             ),
         },
     ];
 
     return (
         <div className="queue-container">
-
-
             <div className="queue-input-container">
                 <div>
                     <Input
