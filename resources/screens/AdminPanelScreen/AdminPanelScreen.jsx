@@ -5,8 +5,13 @@ import ScheduleParser from "../../components/ScheduleParser/ScheduleParser";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Tabs } from "antd";
 import "./AdminPanelScreen.scss";
+import UserTable from "../../components/UserTable/UserTable";
 
 const items = [
+    {
+        key: "/panel/user",
+        label: `User Table`,
+    },
     {
         key: "/panel/queue",
         label: `Queues Table`,
@@ -30,7 +35,12 @@ export default function AdminPanelScreen() {
 
     const TabsEl = (
         <div className="admin-tabs">
-            <Tabs defaultActiveKey="1" items={items} onChange={onChange} size="large"/>
+            <Tabs
+                defaultActiveKey="1"
+                items={items}
+                onChange={onChange}
+                size="large"
+            />
         </div>
     );
 
@@ -39,15 +49,14 @@ export default function AdminPanelScreen() {
             return (
                 <div className="admin-panel-container">
                     {TabsEl}
-                    <QueueTable />
+                    <UserTable />
                 </div>
             );
-
         case items[1].key:
             return (
                 <div className="admin-panel-container">
                     {TabsEl}
-                    <OutageTable />
+                    <QueueTable />
                 </div>
             );
 
@@ -55,15 +64,24 @@ export default function AdminPanelScreen() {
             return (
                 <div className="admin-panel-container">
                     {TabsEl}
+                    <OutageTable />
+                </div>
+            );
+
+        case items[3].key:
+            return (
+                <div className="admin-panel-container">
+                    {TabsEl}
                     <ScheduleParser />
                 </div>
             );
-    }
 
-    return (
-        <div className="admin-panel-container">
-            {TabsEl}
-            <QueueTable />
-        </div>
-    );
+        default:
+            return (
+                <div className="admin-panel-container">
+                    {TabsEl}
+                    <UserTable />
+                </div>
+            );
+    }
 }
