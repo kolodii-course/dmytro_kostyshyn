@@ -23,14 +23,14 @@ use App\Http\Controllers\UserController;
 //});
 
 Route::group(['prefix' => 'auth'], function () use ($router) {
-    $router->post('/registration', [AuthController::class, 'register']);
+    $router->post('/registration', [AuthController::class, 'registration']);
     $router->post('/login', [AuthController::class, 'login']);
     $router->post('/refresh', [AuthController::class, 'refresh']);
 });
 
-
 Route::group(['prefix' => 'user'], function () use ($router) {
     $router->get('/', [UserController::class, 'index'])->middleware('jwt.auth')->middleware('admin');
+    $router->get('/{email}', [UserController::class, 'byEmail']);
 });
 
 Route::group(['prefix' => 'queue'], function () use ($router) {

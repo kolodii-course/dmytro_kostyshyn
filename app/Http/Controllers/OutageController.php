@@ -24,15 +24,19 @@ class OutageController extends Controller
         return Outage::with('queue')->findOrFail($id);
     }
 
-    public function store(CreateOutageRequest $request)
+    public function store(Request $request)
     {
-        $outage = new Outage();
-        $outage->queue_id = $request->queue_id;
-        $outage->start_at = $request->start_at;
-        $outage->end_at = $request->end_at;
-        $outage->save();
+        $outages = collect($request->all())->map(function ($outageData) {
+            $outage = new Outage();
+            $outage->queue_id = $outageData['queue_id'];
+            $outage->start_at = $outageData['start_at'];
+            $outage->end_at = $outageData['end_at'];
+            $outage->save();
 
-        return $outage;
+            return $outage;
+        });
+
+        return $outages;
     }
 
     public function update(UpdateOutageRequest $request, $id)
