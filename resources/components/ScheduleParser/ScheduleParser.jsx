@@ -108,19 +108,17 @@ export default function ScheduleParser() {
         });
         setNeedCreateQueues([...new Set(newQueues)]);
 
-        await Promise.all([
-            ...outages.map((val) =>
-                Outage.create(
-                    val.start_at,
-                    val.end_at,
-                    getQueueId(queues, val.queue_name)
-                )
-            ),
-        ]);
+        Outage.createMore(
+            outages.map((val) => ({
+                start_at: val.start_at.replace('T24:', 'T23:') ,
+                end_at: val.end_at.replace('T24:', 'T23:'),
+                queue_id: getQueueId(queues, val.queue_name),
+            }))
+        );
 
-        setInputText("")
-        setOutages([])
-        setNeedCreateQueues([])
+        setInputText("");
+        setOutages([]);
+        setNeedCreateQueues([]);
     }
 
     return (
